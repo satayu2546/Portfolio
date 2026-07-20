@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-background scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Satayu Satiraungkul — Digital Engineering Student</title>
+    <meta
+      name="description"
+      content="Portfolio of Satayu Satiraungkul, a Digital Engineering student interested in penetration testing, vulnerability analysis, and IT infrastructure. Technical case studies and presentation slides."
+    />
+    <meta name="theme-color" content="#ffffff" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              background: '#fdfdfd',
+              foreground: '#1f1f1f',
+              muted: '#f4f4f4',
+              'muted-foreground': '#737373',
+              'secondary-foreground': '#3d3d3d',
+              border: '#e6e6e6',
+              accent: '#3a5c88',
+              'accent-foreground': '#fafafa',
+              primary: '#1f1f1f',
+              'primary-foreground': '#fafafa',
+            },
+            fontFamily: {
+              sans: ['Geist', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+              mono: ['Geist Mono', 'ui-monospace', 'monospace'],
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer base {
+        body {
+          @apply bg-background font-sans text-foreground antialiased;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="top">
+      <!-- Header -->
+      <header
+        class="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur-sm"
+      >
+        <div
+          class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 md:px-8"
+        >
+          <a href="#top" class="flex flex-col leading-tight">
+            <span class="text-sm font-medium text-foreground">Satayu Satiraungkul</span>
+            <span class="text-sm text-muted-foreground"
+              >Digital Engineering Student</span
+            >
+          </a>
+          <nav aria-label="Primary">
+            <ul class="flex items-center gap-5 text-sm md:gap-7">
+              <li>
+                <a
+                  href="#about"
+                  class="text-muted-foreground transition-colors hover:text-foreground"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#projects"
+                  class="text-muted-foreground transition-colors hover:text-foreground"
+                  >Projects</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#slides"
+                  class="text-muted-foreground transition-colors hover:text-foreground"
+                  >Slides</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-muted-foreground transition-colors hover:text-foreground"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <!-- About -->
+        <section id="about" class="scroll-mt-20 border-b border-border">
+          <div class="mx-auto max-w-5xl px-6 py-20 md:px-8 md:py-28">
+            <p
+              class="font-mono text-xs uppercase tracking-widest text-muted-foreground"
+            >
+              About me
+            </p>
+            <h1
+              class="mt-6 max-w-3xl text-pretty text-2xl font-medium leading-snug text-foreground md:text-4xl md:leading-tight"
+            >
+              I'm a Digital Engineering student interested in penetration
+              testing, vulnerability analysis, and IT hardware optimization —
+              turning curiosity about how systems break into practical,
+              well-documented security and infrastructure work.
+            </h1>
+
+            <div class="mt-10 grid gap-8 md:grid-cols-3 md:gap-12">
+              <div class="space-y-4 md:col-span-2">
+                <p class="text-pretty leading-relaxed text-muted-foreground">
+                  I'm a recent Digital Engineering graduate from SIIT,
+                  Thammasat University, with internship experience at Thai
+                  Airways Cargo. I'm passionate about software development,
+                  problem-solving, and learning new technologies, and I'm a
+                  fast learner and team player eager to begin a career in
+                  software engineering or IT.
+                </p>
+                <p class="text-pretty leading-relaxed text-muted-foreground">
+                  Outside of coursework and internships, I enjoy setting up
+                  homelabs, digging into vulnerability analysis, and finding
+                  ways to squeeze more performance out of hardware. Everything
+                  below is written up as a short technical report rather than
+                  a highlight reel — the context, the approach, and the
+                  measurable outcome of each project.
+                </p>
+                <div class="pt-2">
+                  <a
+                    href="#projects"
+                    class="inline-flex h-10 items-center gap-2 rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                  >
+                    Read the case studies
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M7 7h10v10" />
+                      <path d="M7 17 17 7" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <dl
+                class="space-y-4 border-t border-border pt-6 text-sm md:border-l md:border-t-0 md:pl-8 md:pt-0"
+              >
+                <div>
+                  <dt
+                    class="font-mono text-xs uppercase tracking-widest text-muted-foreground"
+                  >
+                    Role
+                  </dt>
+                  <dd class="mt-1 text-foreground">
+                    Digital Engineering Student
+                  </dd>
+                </div>
+                <div>
+                  <dt
+                    class="font-mono text-xs uppercase tracking-widest text-muted-foreground"
+                  >
+                    Based in
+                  </dt>
+                  <dd class="mt-1 text-foreground">Bangkok, TH</dd>
+                </div>
+                <div>
+                  <dt
+                    class="font-mono text-xs uppercase tracking-widest text-muted-foreground"
+                  >
+                    Focus
+                  </dt>
+                  <dd class="mt-1 text-foreground">
+                    IT infrastructure &amp; software
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </section>
+
+        <!-- Technical Projects -->
+        <section id="projects" class="scroll-mt-20 border-b border-border">
+          <div class="mx-auto max-w-5xl px-6 py-20 md:px-8 md:py-28">
+            <div class="flex items-baseline justify-between gap-4">
+              <p
+                class="font-mono text-xs uppercase tracking-widest text-muted-foreground"
+              >
+                Technical projects
+              </p>
+              <p class="font-mono text-xs text-muted-foreground">
+                02 case studies
+              </p>
+            </div>
+
+            <h2
+              class="mt-6 max-w-2xl text-balance text-xl font-medium leading-snug text-foreground md:text-2xl"
+            >
+              Short reports documenting the context, decisions, and measurable
+              outcomes of each project.
+            </h2>
+
+            <div
+              class="mt-12 flex flex-col divide-y divide-border border-y border-border"
+            >
+              <!-- Case study 1 -->
+              <article class="py-8 first:pt-10 last:pb-10">
+                <div class="grid gap-6 md:grid-cols-[220px_1fr]">
+                  <div
+                    class="relative aspect-[4/3] overflow-hidden rounded-md border border-border bg-muted"
+                  >
+                    <img
+                      src="projects/cargo-hurdle-rate.png"
+                      alt="Screenshot of the Python script used to automate cargo hurdle rate calculations at Thai Airways Cargo"
+                      class="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <div
+                      class="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-muted-foreground"
+                    >
+                      <span>2025</span>
+                      <span aria-hidden="true">·</span>
+                      <span>IT Intern, Thai Airways Cargo</span>
+                      <span aria-hidden="true">·</span>
+                      <span>2 months</span>
+                    </div>
+                    <h3 class="mt-2 text-lg font-medium text-foreground md:text-xl">
+                      Cargo hurdle rate automation &amp; inventory system
+                    </h3>
+                    <p
+                      class="mt-2 max-w-2xl text-pretty leading-relaxed text-muted-foreground"
+                    >
+                      Automated a manual cargo pricing calculation and built
+                      part of an internal inventory management tool during a
+                      summer internship at Thai Airways Cargo.
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                      <span
+                        class="rounded border border-border bg-muted px-2 py-0.5 font-mono text-xs text-secondary-foreground"
+                        >Python</span
+                      >
+                      <span
+                        class="rounded border border-border bg-muted px-2 py-0.5 font-mono text-xs text-secondary-foreground"
+                        >pandas</span
+                      >
+                      <span
+                        class="rounded border border-border bg-muted px-2 py-0.5 font-mono text-xs text-secondary-foreground"
+                        >openpyxl</span
+                      >
+                      <span
+                        class="rounded border border-border bg-muted px-2 py-0.5 font-mono text-xs text-secondary-foreground"
+                        >Streamlit</span
+                      >
+                    </div>
+                    <dl
+                      class="mt-5 flex flex-wrap gap-x-8 gap-y-3 border-t border-border pt-4"
+                    >
+                      <div>
+                        <dd class="text-lg font-medium text-foreground">
+                          TG03–05
+                        </dd>
+                        <dt
+                          class="font-mono text-xs uppercase tracking-wide text-muted-foreground"
+                        >
+                          Flights automated
+                        </dt>
+                      </div>
+                      <div>
+                        <dd class="text-lg font-medium text-foreground">
+                          Manual → Auto
+                        </dd>
+                        <dt
+                          class="font-mono text-xs uppercase tracking-wide text-muted-foreground"
+                        >
+                          Report generation
+                        </dt>
+                      </div>
+                      <div>
+                        <dd class="text-lg font-medium text-foreground">
+                          Streamlit
+                        </dd>
+                        <dt
+                          class="font-mono text-xs uppercase tracking-wide text-muted-foreground"
+                        >
+                          Catalog module
+                        </dt>
+                      </div>
+                    </dl>
+
+                    <button
+                      type="button"
+                      data-report-toggle
+                      aria-expanded="false"
+                      aria-controls="report-cargo-hurdle-rate"
+                      class="group mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-accent"
+                    >
+                      <span data-label-closed>Read technical report</span>
+                      <span data-label-open hidden>Hide technical report</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        data-chevron
+                        class="transition-transform"
+                      >
+                        <path d="m6 9 6 6 6-6" />
+                      </svg>
+                    </button>
+
+                    <div
+                      id="report-cargo-hurdle-rate"
+                      hidden
+                      class="mt-6 space-y-6 border-l-2 border-border pl-5 text-sm"
+                    >
+                      <div>
+                        <h4
+                          class="font-mono text-xs uppercase tracking-widest text-accent"
+                        >
+                          Context
+                        </h4>
+                        <p class="mt-2 leading-relaxed text-muted-foreground">
+                          Cargo hurdle rates had to be calculated by hand from
+                          large flight, airport, and fuel-surcharge datasets —
+                          a slow, error-prone process. I joined the team as an
+                          IT intern to help automate it, alongside building
+                          part of a new internal inventory system.
+                        </p>
+                      </div>
+                      <div>
+                        <h4
+                          class="font-mono text-xs uppercase tracking-widest text-accent"
+                        >
+                          Approach
+                        </h4>
+                        <ul class="mt-2 space-y-2">
+                          <li
+                            class="flex gap-3 leading-relaxed text-muted-foreground"
+                          >
+                            <span class="font-mono text-xs text-muted-foreground"
+                              >01</span
+                            >
+                            <span
+                              >Wrote a Python script with pandas to load,
+                              clean, and merge flight, airport, and fuel
+                              surcharge data, taking ownership of flight
+                              numbers TG03, TG04, and TG05.</span
+                            >
+                          </li>
+                          <li
+                            class="flex gap-3 leading-relaxed text-muted-foreground"
+                          >
+                            <span class="font-mono text-xs text-muted-foreground"
+                              >02</span
+                            >
+                            <span
+                              >Calculated per-kilogram hurdle rates and
+                              surcharges for each shipment, mapped by
+                              geographic region and airport code.</span
+                            >
+                          </li>
+                          <li
+                            class="flex gap-3 leading-relaxed text-muted-foreground"
+                          >
+                            <span class="font-mono text-xs text-muted-foreground"
+                              >03</span
+                            >
+                            <span
+                              >Used openpyxl to export a styled, formatted
+                              Excel report matching the team's existing
+                              reporting layout.</span
+                            >
+                          </li>
+                          <li
+                            class="flex gap-3 leading-relaxed text-muted-foreground"
+                          >
+                            <span class="font-mono text-xs text-muted-foreground"
+                              >04</span
+                            >
+                            <span
+                              >Built the Product Catalog module of an internal
+                              inventory management system in Streamlit,
+                              handling adding, editing, and deleting product
+                              records.</span
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h4
+                          class="font-mono text-xs uppercase tracking-widest text-accent"
+                        >
+                          Outcome
+                        </h4>
+                        <p class="mt-2 leading-relaxed text-muted-foreground">
+                          The Python tool replaced a manual calculation
+                          process with an automated, repeatable one, cutting
+                          down processing time and reducing errors. The
+                          catalog module became part of a working internal
+                          tool used by the team, and I presented the finished
+                          work to both my supervisor and my university
+                          advisor.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Case study 2 -->
+              <article class="py-8 first:pt-10 last:pb-10">
+                <div class="grid gap-6 md:grid-cols-[220px_1fr]">
+                  <div
+                    class="relative aspect-[4/3] overflow-hidden rounded-md border border-border bg-muted"
+                  >
+                    <img
+                      src="projects/gait-recognition.png"
+                      alt="Webcam frame showing pose-estimation keypoints on a walking person during gait sequence collection"
+                      class="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <div
+                      class="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-muted-foreground"
+                    >
+                      <span>2026</span>
+                      <span aria-hidden="true">·</span>
+                      <span>Senior Project</span>
+                      <span aria-hidden="true">·</span>
+                      <span>Team of 3</span>
+                    </div>
+                    <h3 class="mt-2 text-lg font-medium text-foreground md:text-xl">
+                      Gait recognition using ST-GCN
+                    </h3>
+                    <p
+                      class="mt-2 max-w-2xl text-pretty leading-relaxed text-muted-foreground"
+                    >
+                      Built a real-time gait recognition system that
+                      identifies people from the way they walk, using pose
+                      estimation and a Spatio-Temporal Graph Convolutional
+                      Network.
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                      <span
+                        class="rounded border border-border bg-muted px-2 py-0.5 font-mono text-xs text-secondary-foreground"
+                        >ST-GCN</span
+                      >
+                      <span
+                        class="rounded border border-border bg-muted px-2 py-0.5 font-mono text-xs text-secondary-foreground"
+                        >Pose Estimation</span
+                      >
+                      <span
+                        class="rounded border border-border bg-muted px-2 py-0.5 font-mono text-xs text-secondary-foreground"
+                        >Computer Vision</span
+                      >
+                      <span
+                        class="rounded border border-border bg-muted px-2 py-0.5 font-mono text-xs text-secondary-foreground"
+                        >Python</span
+                      >
+                    </div>
+                    <dl
+                      class="mt-5 flex flex-wrap gap-x-8 gap-y-3 border-t border-border pt-4"
+                    >
+                      <div>
+                        <dd class="text-lg font-medium text-foreground">
+                          87.5%
+                        </dd>
+                        <dt
+                          class="font-mono text-xs uppercase tracking-wide text-muted-foreground"
+                        >
+                          Test accuracy
+                        </dt>
+                      </div>
+                      <div>
+                        <dd class="text-lg font-medium text-foreground">
+                          Real-time
+                        </dd>
+                        <dt
+                          class="font-mono text-xs uppercase tracking-wide text-muted-foreground"
+                        >
+                          Webcam inference
+                        </dt>
+                      </div>
+                      <div>
+                        <dd class="text-lg font-medium text-foreground">
+                          60% threshold
+                        </dd>
+                        <dt
+                          class="font-mono text-xs uppercase tracking-wide text-muted-foreground"
+                        >
+                          Unknown detection
+                        </dt>
+                      </div>
+                    </dl>
+
+                    <button
+                      type="button"
+                      data-report-toggle
+                      aria-expanded="false"
+                      aria-controls="report-gait-recognition"
+                      class="group mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-accent"
+                    >
+                      <span data-label-closed>Read technical report</span>
+                      <span data-label-open hidden>Hide technical report</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        data-chevron
+                        class="transition-transform"
+                      >
+                        <path d="m6 9 6 6 6-6" />
+                      </svg>
+                    </button>
+
+                    <div
+                      id="report-gait-recognition"
+                      hidden
+                      class="mt-6 space-y-6 border-l-2 border-border pl-5 text-sm"
+                    >
+                      <div>
+                        <h4
+                          class="font-mono text-xs uppercase tracking-widest text-accent"
+                        >
+                          Context
+                        </h4>
+                        <p class="mt-2 leading-relaxed text-muted-foreground">
+                          Gait recognition identifies people by how they walk
+                          — a non-intrusive biometric that works at a
+                          distance with a standard camera. Our initial model,
+                          trained on a large 3D-skeleton dataset, performed
+                          well in testing but failed in real-world use because
+                          real-time pose estimation only produces 2D
+                          keypoints, a mismatch with the training data.
+                        </p>
+                      </div>
+                      <div>
+                        <h4
+                          class="font-mono text-xs uppercase tracking-widest text-accent"
+                        >
+                          Approach
+                        </h4>
+                        <ul class="mt-2 space-y-2">
+                          <li
+                            class="flex gap-3 leading-relaxed text-muted-foreground"
+                          >
+                            <span class="font-mono text-xs text-muted-foreground"
+                              >01</span
+                            >
+                            <span
+                              >Recorded a self-collected dataset of 41 walking
+                              clips and extracted 2D keypoints with YOLO-Pose,
+                              converting them into a consistent 24-joint
+                              skeleton format.</span
+                            >
+                          </li>
+                          <li
+                            class="flex gap-3 leading-relaxed text-muted-foreground"
+                          >
+                            <span class="font-mono text-xs text-muted-foreground"
+                              >02</span
+                            >
+                            <span
+                              >Built a shared preprocessing module for
+                              centering, scaling, and handling missing joints,
+                              so training and live inference used identical
+                              transformations.</span
+                            >
+                          </li>
+                          <li
+                            class="flex gap-3 leading-relaxed text-muted-foreground"
+                          >
+                            <span class="font-mono text-xs text-muted-foreground"
+                              >03</span
+                            >
+                            <span
+                              >Trained an ST-GCN model on the 2D-keypoint
+                              dataset, using class weighting, data
+                              augmentation, and cosine learning-rate
+                              scheduling to generalize on a small dataset.</span
+                            >
+                          </li>
+                          <li
+                            class="flex gap-3 leading-relaxed text-muted-foreground"
+                          >
+                            <span class="font-mono text-xs text-muted-foreground"
+                              >04</span
+                            >
+                            <span
+                              >Built a real-time inference pipeline with a
+                              sliding frame buffer and a confidence threshold
+                              that flags unrecognized walkers as
+                              "Unknown".</span
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h4
+                          class="font-mono text-xs uppercase tracking-widest text-accent"
+                        >
+                          Outcome
+                        </h4>
+                        <p class="mt-2 leading-relaxed text-muted-foreground">
+                          The redesigned system reached 87.5% accuracy on the
+                          self-collected test set and ran stably on a
+                          standard laptop webcam, updating predictions at
+                          roughly 6 Hz. The project showed how much
+                          consistency between training and real-world data
+                          matters for a model to work outside the lab.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- Presentation Slides -->
+        <section id="slides" class="scroll-mt-20 border-b border-border">
+          <div class="mx-auto max-w-5xl px-6 py-20 md:px-8 md:py-28">
+            <p
+              class="font-mono text-xs uppercase tracking-widest text-muted-foreground"
+            >
+              Presentation slides
+            </p>
+            <h2
+              class="mt-6 max-w-2xl text-balance text-xl font-medium leading-snug text-foreground md:text-2xl"
+            >
+              Reports and presentations from my internship and senior
+              project, available to download as PDF.
+            </h2>
+
+            <ul
+              class="mt-12 flex flex-col divide-y divide-border border-y border-border"
+            >
+              <li>
+                <a
+                  href="#"
+                  download
+                  class="group flex flex-col gap-4 py-6 transition-colors hover:bg-muted/50 sm:flex-row sm:items-center sm:gap-6 sm:px-2"
+                >
+                  <span
+                    class="flex size-11 shrink-0 items-center justify-center rounded-md border border-border bg-muted text-muted-foreground"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                      />
+                      <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                      <path d="M10 9H8" />
+                      <path d="M16 13H8" />
+                      <path d="M16 17H8" />
+                    </svg>
+                  </span>
+                  <div class="min-w-0 flex-1">
+                    <div
+                      class="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-muted-foreground"
+                    >
+                      <span>Thai Airways Cargo</span>
+                      <span aria-hidden="true">·</span>
+                      <span>May 2025</span>
+                    </div>
+                    <h3 class="mt-1 font-medium text-foreground">
+                      Summer training report
+                    </h3>
+                    <p
+                      class="mt-1 max-w-xl text-pretty text-sm leading-relaxed text-muted-foreground"
+                    >
+                      A summary of my DES 300 internship at Thai Airways
+                      Cargo, covering product catalog design, supplier
+                      research, the Python hurdle rate automation tool, and
+                      the internal inventory management system.
+                    </p>
+                  </div>
+                  <div
+                    class="flex items-center justify-between gap-4 sm:flex-col sm:items-end sm:justify-center"
+                  >
+                    <span class="font-mono text-xs text-muted-foreground"
+                      >26 pages · 2.4 MB</span
+                    >
+                    <span
+                      class="inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-sm font-medium text-foreground transition-colors group-hover:border-accent group-hover:text-accent"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" x2="12" y1="15" y2="3" />
+                      </svg>
+                      Download
+                    </span>
+                  </div>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  download
+                  class="group flex flex-col gap-4 py-6 transition-colors hover:bg-muted/50 sm:flex-row sm:items-center sm:gap-6 sm:px-2"
+                >
+                  <span
+                    class="flex size-11 shrink-0 items-center justify-center rounded-md border border-border bg-muted text-muted-foreground"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                      />
+                      <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                      <path d="M10 9H8" />
+                      <path d="M16 13H8" />
+                      <path d="M16 17H8" />
+                    </svg>
+                  </span>
+                  <div class="min-w-0 flex-1">
+                    <div
+                      class="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-muted-foreground"
+                    >
+                      <span>SIIT, Thammasat University</span>
+                      <span aria-hidden="true">·</span>
+                      <span>2026</span>
+                    </div>
+                    <h3 class="mt-1 font-medium text-foreground">
+                      Senior project: Gait recognition using ST-GCN
+                    </h3>
+                    <p
+                      class="mt-1 max-w-xl text-pretty text-sm leading-relaxed text-muted-foreground"
+                    >
+                      Final presentation of my senior project — a real-time
+                      gait recognition system combining pose estimation and a
+                      Spatio-Temporal Graph Convolutional Network, achieving
+                      87.5% accuracy on a self-collected dataset.
+                    </p>
+                  </div>
+                  <div
+                    class="flex items-center justify-between gap-4 sm:flex-col sm:items-end sm:justify-center"
+                  >
+                    <span class="font-mono text-xs text-muted-foreground"
+                      >18 slides · 5.1 MB</span
+                    >
+                    <span
+                      class="inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-sm font-medium text-foreground transition-colors group-hover:border-accent group-hover:text-accent"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" x2="12" y1="15" y2="3" />
+                      </svg>
+                      Download
+                    </span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </main>
+
+      <!-- Contact / Footer -->
+      <footer id="contact" class="scroll-mt-20">
+        <div class="mx-auto max-w-5xl px-6 py-20 md:px-8 md:py-28">
+          <p
+            class="font-mono text-xs uppercase tracking-widest text-muted-foreground"
+          >
+            Contact
+          </p>
+
+          <div class="mt-6 grid gap-10 md:grid-cols-3 md:gap-12">
+            <h2
+              class="max-w-md text-balance text-xl font-medium leading-snug text-foreground md:col-span-2 md:text-2xl"
+            >
+              Looking for an entry-level IT, security, or software role? I'd
+              be glad to talk.
+            </h2>
+
+            <div class="space-y-6 text-sm md:border-l md:border-border md:pl-8">
+              <div>
+                <p
+                  class="font-mono text-xs uppercase tracking-widest text-muted-foreground"
+                >
+                  Email
+                </p>
+                <a
+                  href="mailto:satayu.sati@gmail.com"
+                  class="mt-1 inline-flex items-center gap-1 text-foreground transition-colors hover:text-accent"
+                >
+                  satayu.sati@gmail.com
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 7h10v10" />
+                    <path d="M7 17 17 7" />
+                  </svg>
+                </a>
+              </div>
+
+              <ul class="space-y-2">
+                <li>
+                  <a
+                    href="https://github.com/satayu2546"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group inline-flex items-center gap-2 text-foreground transition-colors hover:text-accent"
+                  >
+                    <span
+                      class="w-20 font-mono text-xs uppercase tracking-widest text-muted-foreground"
+                      >GitHub</span
+                    >
+                    <span>@satayu2546</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            class="mt-16 flex flex-col items-start justify-between gap-2 border-t border-border pt-6 font-mono text-xs text-muted-foreground sm:flex-row sm:items-center"
+          >
+            <span id="copyright">© Satayu Satiraungkul</span>
+            <span>Built for clarity, not noise.</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Expandable technical reports
+      document.querySelectorAll('[data-report-toggle]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var panelId = btn.getAttribute('aria-controls');
+          var panel = document.getElementById(panelId);
+          var isOpen = btn.getAttribute('aria-expanded') === 'true';
+          var next = !isOpen;
+
+          btn.setAttribute('aria-expanded', String(next));
+          if (panel) panel.hidden = !next;
+
+          var closed = btn.querySelector('[data-label-closed]');
+          var open = btn.querySelector('[data-label-open]');
+          var chevron = btn.querySelector('[data-chevron]');
+          if (closed) closed.hidden = next;
+          if (open) open.hidden = !next;
+          if (chevron) chevron.classList.toggle('rotate-180', next);
+        });
+      });
+
+      // Dynamic copyright year
+      document.getElementById('copyright').textContent =
+        '© ' + new Date().getFullYear() + ' Satayu Satiraungkul';
+    </script>
+  </body>
+</html>
