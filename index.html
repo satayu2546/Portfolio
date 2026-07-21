@@ -51,6 +51,17 @@
         }
       }
     </style>
+    <style>
+      #case-study-modal {
+        transition: opacity 220ms ease;
+      }
+      #case-study-modal .modal-panel {
+        transition: opacity 220ms ease, transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      #modal-slide-img {
+        transition: opacity 180ms ease, transform 180ms ease;
+      }
+    </style>
   </head>
 
   <body>
@@ -865,7 +876,7 @@
           onclick="if (event.target === this) closeCaseStudyModal()"
         >
           <div
-            class="flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-lg border border-border bg-background"
+            class="modal-panel flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-lg border border-border bg-background"
           >
             <div class="flex items-start justify-between gap-4 border-b border-border p-6">
               <div>
@@ -1074,8 +1085,21 @@
 
       function stepSlide(delta) {
         var cs = caseStudies[currentCaseStudy];
-        currentSlideIndex = (currentSlideIndex + delta + cs.slideCount) % cs.slideCount;
-        renderSlide();
+        var img = document.getElementById('modal-slide-img');
+
+        // Fade + slightly zoom out the current slide first
+        img.style.opacity = '0';
+        img.style.transform = delta > 0 ? 'scale(1.02) translateX(-6px)' : 'scale(1.02) translateX(6px)';
+
+        setTimeout(function () {
+          currentSlideIndex = (currentSlideIndex + delta + cs.slideCount) % cs.slideCount;
+          renderSlide();
+          // Force reflow so the browser registers the "faded out" state
+          // before we transition back in, otherwise it just snaps.
+          void img.offsetWidth;
+          img.style.transform = 'scale(1) translateX(0)';
+          img.style.opacity = '1';
+        }, 160);
       }
 
       function openCaseStudyModal(key) {
@@ -1085,18 +1109,51 @@
         document.getElementById('modal-eyebrow').textContent = cs.eyebrow;
         document.getElementById('modal-title').textContent = cs.title;
         document.getElementById('modal-pain-point').textContent = cs.painPoint;
+
+        var img = document.getElementById('modal-slide-img');
+        img.style.transition = 'none';
+        img.style.opacity = '1';
+        img.style.transform = 'scale(1) translateX(0)';
         renderSlide();
+        requestAnimationFrame(function () {
+          img.style.transition = '';
+        });
+
         var modal = document.getElementById('case-study-modal');
+        var panel = modal.querySelector('.modal-panel');
+
         modal.hidden = false;
         modal.classList.add('flex');
+
+        // Start from the "hidden" visual state...
+        modal.style.opacity = '0';
+        panel.style.opacity = '0';
+        panel.style.transform = 'scale(0.96) translateY(12px)';
+
+        // ...force a reflow so the browser registers that state...
+        void modal.offsetWidth;
+
+        // ...then transition to the visible state.
+        modal.style.opacity = '1';
+        panel.style.opacity = '1';
+        panel.style.transform = 'scale(1) translateY(0)';
+
         document.body.style.overflow = 'hidden';
       }
 
       function closeCaseStudyModal() {
         var modal = document.getElementById('case-study-modal');
-        modal.hidden = true;
-        modal.classList.remove('flex');
+        var panel = modal.querySelector('.modal-panel');
+
+        modal.style.opacity = '0';
+        panel.style.opacity = '0';
+        panel.style.transform = 'scale(0.96) translateY(12px)';
         document.body.style.overflow = '';
+
+        setTimeout(function () {
+          modal.hidden = true;
+          modal.classList.remove('flex');
+        }, 220);
       }
 
       document.addEventListener('keydown', function (e) {
