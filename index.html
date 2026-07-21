@@ -1066,7 +1066,7 @@
 
       function renderSlide() {
         var cs = caseStudies[currentCaseStudy];
-        var num = String(currentSlideIndex + 1);
+        var num = currentSlideIndex + 1;
         document.getElementById('modal-slide-img').src = cs.folder + num + '.jpg';
         document.getElementById('modal-slide-counter').textContent =
           (currentSlideIndex + 1) + ' / ' + cs.slideCount;
