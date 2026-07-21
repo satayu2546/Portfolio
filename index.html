@@ -58,8 +58,26 @@
       #case-study-modal .modal-panel {
         transition: opacity 220ms ease, transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
       }
+      #modal-slide-viewport {
+        position: relative;
+        overflow: hidden;
+      }
       #modal-slide-img {
-        transition: opacity 180ms ease, transform 180ms ease;
+        display: block;
+        width: 100%;
+      }
+      #modal-slide-img-incoming {
+        position: absolute;
+        inset: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+      }
+      #modal-slide-img,
+      #modal-slide-img-incoming {
+        transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
       }
     </style>
   </head>
@@ -902,7 +920,10 @@
 
               <h4 class="mt-6 font-mono text-xs uppercase tracking-widest text-accent">Presentation slides</h4>
               <div class="relative mt-3 overflow-hidden rounded-md border border-border bg-muted">
-                <img id="modal-slide-img" src="" alt="Presentation slide" class="w-full" />
+                <div id="modal-slide-viewport">
+                  <img id="modal-slide-img" src="" alt="Presentation slide" />
+                  <img id="modal-slide-img-incoming" src="" alt="" />
+                </div>
                 <button
                   type="button"
                   onclick="stepSlide(-1)"
@@ -1083,23 +1104,52 @@
           (currentSlideIndex + 1) + ' / ' + cs.slideCount;
       }
 
-      function stepSlide(delta) {
-        var cs = caseStudies[currentCaseStudy];
-        var img = document.getElementById('modal-slide-img');
+      var isSliding = false;
 
-        // Fade + slightly zoom out the current slide first
-        img.style.opacity = '0';
-        img.style.transform = delta > 0 ? 'scale(1.02) translateX(-6px)' : 'scale(1.02) translateX(6px)';
+      function stepSlide(delta) {
+        if (isSliding) return; // ignore rapid clicks mid-transition
+        isSliding = true;
+
+        var cs = caseStudies[currentCaseStudy];
+        var viewport = document.getElementById('modal-slide-viewport');
+        var current = document.getElementById('modal-slide-img');
+        var incoming = document.getElementById('modal-slide-img-incoming');
+
+        var nextIndex = (currentSlideIndex + delta + cs.slideCount) % cs.slideCount;
+        var direction = delta > 0 ? 1 : -1; // 1: next slide arrives from the right
+
+        // Lock the viewport height so it doesn't jump while the two
+        // images (possibly different natural sizes) are stacked.
+        viewport.style.height = current.offsetHeight + 'px';
+
+        // Position the incoming image just off-screen, no transition yet.
+        incoming.src = cs.folder + (nextIndex + 1) + '.jpg';
+        incoming.style.transition = 'none';
+        incoming.style.transform = 'translateX(' + direction * 100 + '%)';
+        incoming.style.opacity = '1';
+
+        // Force reflow so the "off-screen" starting position is registered
+        // before we animate, otherwise both images just snap into place.
+        void incoming.offsetWidth;
+
+        incoming.style.transition = '';
+        current.style.transition = '';
+        incoming.style.transform = 'translateX(0)';
+        current.style.transform = 'translateX(' + -direction * 100 + '%)';
 
         setTimeout(function () {
-          currentSlideIndex = (currentSlideIndex + delta + cs.slideCount) % cs.slideCount;
-          renderSlide();
-          // Force reflow so the browser registers the "faded out" state
-          // before we transition back in, otherwise it just snaps.
-          void img.offsetWidth;
-          img.style.transform = 'scale(1) translateX(0)';
-          img.style.opacity = '1';
-        }, 160);
+          currentSlideIndex = nextIndex;
+          current.src = incoming.src;
+          current.style.transition = 'none';
+          current.style.transform = 'translateX(0)';
+          incoming.style.transition = 'none';
+          incoming.style.opacity = '0';
+          incoming.style.transform = 'translateX(0)';
+          viewport.style.height = 'auto';
+          document.getElementById('modal-slide-counter').textContent =
+            (currentSlideIndex + 1) + ' / ' + cs.slideCount;
+          isSliding = false;
+        }, 320);
       }
 
       function openCaseStudyModal(key) {
@@ -1111,12 +1161,19 @@
         document.getElementById('modal-pain-point').textContent = cs.painPoint;
 
         var img = document.getElementById('modal-slide-img');
+        var incoming = document.getElementById('modal-slide-img-incoming');
+        var viewport = document.getElementById('modal-slide-viewport');
+        isSliding = false;
+        viewport.style.height = 'auto';
         img.style.transition = 'none';
-        img.style.opacity = '1';
-        img.style.transform = 'scale(1) translateX(0)';
+        img.style.transform = 'translateX(0)';
+        incoming.style.transition = 'none';
+        incoming.style.opacity = '0';
+        incoming.style.transform = 'translateX(0)';
         renderSlide();
         requestAnimationFrame(function () {
           img.style.transition = '';
+          incoming.style.transition = '';
         });
 
         var modal = document.getElementById('case-study-modal');
