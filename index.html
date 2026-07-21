@@ -852,10 +852,16 @@
           </div>
         </section>
         <!-- Case study popup modal -->
+        <!--
+          NOTE: "flex" is intentionally NOT in the static class list here.
+          It's toggled via JS together with "hidden" so the modal is truly
+          display:none on page load instead of the two classes fighting
+          over specificity.
+        -->
         <div
           id="case-study-modal"
           hidden
-          class="fixed inset-0 z-50 flex items-center justify-center bg-foreground/60 p-4"
+          class="fixed inset-0 z-50 items-center justify-center bg-foreground/60 p-4"
           onclick="if (event.target === this) closeCaseStudyModal()"
         >
           <div
@@ -1080,12 +1086,16 @@
         document.getElementById('modal-title').textContent = cs.title;
         document.getElementById('modal-pain-point').textContent = cs.painPoint;
         renderSlide();
-        document.getElementById('case-study-modal').hidden = false;
+        var modal = document.getElementById('case-study-modal');
+        modal.hidden = false;
+        modal.classList.add('flex');
         document.body.style.overflow = 'hidden';
       }
 
       function closeCaseStudyModal() {
-        document.getElementById('case-study-modal').hidden = true;
+        var modal = document.getElementById('case-study-modal');
+        modal.hidden = true;
+        modal.classList.remove('flex');
         document.body.style.overflow = '';
       }
 
